@@ -18,7 +18,7 @@
 }
 
 *{box-sizing:border-box;}
-html{scroll-behavior:smooth;}
+html{scroll-behavior:smooth; -webkit-text-size-adjust:100%;}
 body{
   margin:0;
   background:var(--bg);
@@ -26,9 +26,24 @@ body{
   font-family:'Inter',system-ui,sans-serif;
   line-height:1.6;
   -webkit-font-smoothing:antialiased;
+  -webkit-tap-highlight-color:transparent;
+}
+
+/* Safari on iOS ignores inherited font on form controls by default,
+   and applies its own rounded/system styling unless explicitly reset. */
+button, input, select, textarea{
+  font-family:inherit;
+  -webkit-appearance:none;
+  appearance:none;
+  border-radius:var(--radius);
+}
+
+img{
+  max-width:100%;
+  display:block;
+  -webkit-transform:translateZ(0); /* avoids occasional Safari image-repaint glitches */
 }
 a{color:inherit;}
-img{max-width:100%;display:block;}
 
 h1,h2,h3,.display{
   font-family:'Fraunces',serif;
@@ -59,6 +74,7 @@ strong{color:var(--text);}
 header.site{
   border-bottom:1px solid var(--line);
   position:sticky; top:0; background:rgba(28,26,23,.92);
+  -webkit-backdrop-filter:blur(6px);
   backdrop-filter:blur(6px);
   z-index:40;
 }
@@ -84,10 +100,11 @@ nav.links a:hover, nav.links a.active{color:var(--gold);}
 @media (max-width:860px){
   .nav-toggle{display:block;}
   nav.links{
-    position:fixed; top:0; right:-100%; height:100vh; width:78vw; max-width:320px;
+    position:fixed; top:0; right:-100%; height:100vh; height:100dvh; width:78vw; max-width:320px;
     background:var(--bg-alt); border-left:1px solid var(--line);
     flex-direction:column; align-items:flex-start; gap:0;
     padding:80px 26px 26px; transition:right .25s ease; overflow-y:auto;
+    -webkit-overflow-scrolling:touch;
   }
   nav.links.open{right:0;}
   nav.links > a, nav.links .has-drop{width:100%;}
