@@ -245,6 +245,10 @@ footer .foot-grid a:hover{color:var(--gold);}
 
 /* ---- mega nav dropdown ---- */
 .has-drop{position:relative;}
+.has-drop::after{
+  content:''; position:absolute; top:100%; left:50%; transform:translateX(-50%);
+  width:230px; height:18px;
+}
 .dropdown{
   position:absolute; top:calc(100% + 18px); left:50%; transform:translateX(-50%);
   background:var(--card); border:1px solid var(--line); min-width:230px;
