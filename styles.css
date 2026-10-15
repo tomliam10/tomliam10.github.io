@@ -243,21 +243,23 @@ footer .foot-grid a:hover{color:var(--gold);}
 }
 .banner a{text-decoration:underline; color:#14211a; font-weight:600;}
 
-/* ---- mega nav dropdown ---- */
+/* ---- mega nav dropdown (desktop only — mobile uses the inline accordion rules above) ---- */
 .has-drop{position:relative;}
-.has-drop::after{
-  content:''; position:absolute; top:100%; left:50%; transform:translateX(-50%);
-  width:230px; height:18px;
+@media (min-width:861px){
+  .has-drop::after{
+    content:''; position:absolute; top:100%; left:50%; transform:translateX(-50%);
+    width:230px; height:18px;
+  }
+  .dropdown{
+    position:absolute; top:calc(100% + 18px); left:50%; transform:translateX(-50%);
+    background:var(--card); border:1px solid var(--line); min-width:230px;
+    padding:10px 0; display:none; flex-direction:column;
+    box-shadow:0 14px 34px rgba(0,0,0,.4);
+  }
+  .has-drop:hover .dropdown{display:flex;}
+  .dropdown a{padding:10px 18px; font-size:.78rem; color:var(--text-dim); text-decoration:none; white-space:nowrap;}
+  .dropdown a:hover{color:var(--gold); background:rgba(226,166,59,.06);}
 }
-.dropdown{
-  position:absolute; top:calc(100% + 18px); left:50%; transform:translateX(-50%);
-  background:var(--card); border:1px solid var(--line); min-width:230px;
-  padding:10px 0; display:none; flex-direction:column;
-  box-shadow:0 14px 34px rgba(0,0,0,.4);
-}
-.has-drop:hover .dropdown{display:flex;}
-.dropdown a{padding:10px 18px; font-size:.78rem; color:var(--text-dim); text-decoration:none; white-space:nowrap;}
-.dropdown a:hover{color:var(--gold); background:rgba(226,166,59,.06);}
 
 /* ---- stat row ---- */
 .stat-row{display:flex; gap:44px; margin-top:34px; flex-wrap:wrap;}
